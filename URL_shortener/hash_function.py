@@ -19,6 +19,6 @@ def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
 
 def hash_function(url, size_url=4):
     url = url + id_generator()
-    shorter = base64.b64encode(hashlib.new(url).digest()[-size_url:])
+    shorter = base64.b64encode(hashlib.new('MD5', url).digest()[-size_url:])
     sanitized = shorter.replace('=', '').replace('/', '_')
     return sanitized
